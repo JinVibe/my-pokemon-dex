@@ -21,6 +21,7 @@ const Name = styled.div`
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  color: #333
 `;
 
 const Number = styled.div`
@@ -41,6 +42,7 @@ const AddButton = styled.button`
 `;
 
 function PokemonCard({ id, name, image, onAdd }) {
+   console.log('PokemonCard props:', { id, name, image });
   return (
     <Card>
       <PokemonImage src={image} alt={name} />

@@ -31,14 +31,23 @@ function Dashboard({ selectedPokemons }) {
     <DashboardContainer>
       <PokeballSlots>
         {selectedPokemons.map((pokemon) => (
-          <PokeballImg key={pokemon.id} src={pokemon.image} alt={pokemon.name} style={{border: 'none', opacity: 1}} />
+          <PokeballImg
+            key={pokemon.id}
+            src={pokemon.img_url}
+            alt={pokemon.korean_name}
+            style={{ border: 'none', opacity: 1, background: '#fff' }}
+          />
         ))}
         {[...Array(emptySlots)].map((_, idx) => (
-          <PokeballImg key={idx} src="https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png" alt="빈 슬롯" />
+          <PokeballImg
+            key={idx}
+            src="https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png"
+            alt="빈 슬롯"
+          />
         ))}
       </PokeballSlots>
     </DashboardContainer>
   );
 }
 
-export default Dashboard;
+export default Dashboard; 
