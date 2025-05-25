@@ -3,74 +3,42 @@ import styled from 'styled-components';
 
 const DashboardContainer = styled.div`
   background: white;
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  margin: 0 auto 2rem auto;
+  padding: 2rem 0;
+  max-width: 900px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 `;
 
-const Title = styled.h2`
-  margin-bottom: 1rem;
-  color: #333;
-`;
-
-const SelectedPokemonList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-`;
-
-const SelectedPokemon = styled.div`
-  background: #f8f8f8;
-  border-radius: 8px;
-  padding: 0.5rem;
+const PokeballSlots = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 `;
 
-const PokemonImage = styled.img`
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+const PokeballImg = styled.img`
+  width: 70px;
+  height: 70px;
+  opacity: 0.7;
+  border: 2px dashed #ccc;
+  border-radius: 50%;
+  background: #fff;
 `;
 
-const PokemonName = styled.span`
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-`;
-
-const RemoveButton = styled.button`
-  background: #ff4444;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-
-  &:hover {
-    background: #cc0000;
-  }
-`;
-
-function Dashboard({ selectedPokemons, onRemovePokemon }) {
+function Dashboard({ selectedPokemons }) {
+  const emptySlots = 6 - selectedPokemons.length;
   return (
     <DashboardContainer>
-      <Title>선택된 포켓몬 ({selectedPokemons.length}/6)</Title>
-      <SelectedPokemonList>
+      <PokeballSlots>
         {selectedPokemons.map((pokemon) => (
-          <SelectedPokemon key={pokemon.id}>
-            <PokemonImage src={pokemon.image} alt={pokemon.name} />
-            <PokemonName>{pokemon.name}</PokemonName>
-            <RemoveButton onClick={() => onRemovePokemon(pokemon.id)}>
-              삭제
-            </RemoveButton>
-          </SelectedPokemon>
+          <PokeballImg key={pokemon.id} src={pokemon.image} alt={pokemon.name} style={{border: 'none', opacity: 1}} />
         ))}
-      </SelectedPokemonList>
+        {[...Array(emptySlots)].map((_, idx) => (
+          <PokeballImg key={idx} src="https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png" alt="빈 슬롯" />
+        ))}
+      </PokeballSlots>
     </DashboardContainer>
   );
 }
 
-export default Dashboard; 
+export default Dashboard;

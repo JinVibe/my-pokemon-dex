@@ -4,9 +4,10 @@ import PokemonCard from './PokemonCard';
 
 const ListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 `;
 
 function PokemonList({ pokemons, onAddPokemon }) {
@@ -18,7 +19,6 @@ function PokemonList({ pokemons, onAddPokemon }) {
           id={pokemon.id}
           name={pokemon.name}
           image={pokemon.image}
-          types={pokemon.types}
           onAdd={onAddPokemon}
         />
       ))}
@@ -26,4 +26,4 @@ function PokemonList({ pokemons, onAddPokemon }) {
   );
 }
 
-export default PokemonList; 
+export default PokemonList;
