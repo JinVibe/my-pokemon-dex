@@ -7,7 +7,7 @@ import MOCK_DATA from '../data/mock';
 const DexContainer = styled.div`
   min-height: 100vh;
   width: 100vw;
-  background-color: #faeb8b;
+  background-color: #ffe4b8;
   padding: 0;
 `;
 
