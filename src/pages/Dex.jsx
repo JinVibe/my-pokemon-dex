@@ -11,16 +11,6 @@ const DexContainer = styled.div`
   padding: 0;
 `;
 
-const Header = styled.header`
-  width: 100vw;
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #e74c3c;
-  margin: 0;
-  padding: 2rem 0 1.5rem 0;
-`;
-
 function Dex() {
   const [selectedPokemons, setSelectedPokemons] = useState([]);
 
@@ -46,7 +36,6 @@ function Dex() {
 
   return (
     <DexContainer>
-      <Header>나만의 포켓몬</Header>
       <Dashboard
         selectedPokemons={selectedPokemons}
         onRemovePokemon={handleRemovePokemon}
