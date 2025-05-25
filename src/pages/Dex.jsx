@@ -5,7 +5,12 @@ import Dashboard from '../components/Dashboard';
 import MOCK_DATA from '../data/mock';
 
 const DexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
+  width: 100vw;
   background-color: #f5f5f5;
 `;
 

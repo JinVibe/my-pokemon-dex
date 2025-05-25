@@ -7,13 +7,15 @@ const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #ffe4b8;
 `;
 
-const Title = styled.h1`
-  font-size: 2.5rem;
-  color: #333;
+const Logo = styled.img`
+  width: 600px;
+  height: 200px;
+  object-fit: contain;
   margin-bottom: 2rem;
 `;
 
@@ -26,6 +28,7 @@ const StartButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 2rem;
 
   &:hover {
     background-color: #ff5252;
@@ -37,7 +40,7 @@ function Home() {
 
   return (
     <HomeContainer>
-      <Title>포켓몬 도감</Title>
+      <Logo src="https://react-w2-proj.vercel.app/assets/landingPageLogo-RN0wntMB.png" alt="Pokemon Logo" />
       <StartButton onClick={() => navigate('/dex')}>
         포켓몬 도감 시작하기
       </StartButton>
@@ -45,4 +48,4 @@ function Home() {
   );
 }
 
-export default Home; 
+export default Home;
