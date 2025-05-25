@@ -4,10 +4,18 @@ import styled from 'styled-components';
 const DashboardContainer = styled.div`
   background: white;
   border-radius: 20px;
-  margin: 0 auto 2rem auto;
-  padding: 2rem 0;
-  max-width: 900px;
+  margin: 2.5rem auto 2rem auto;
+  padding: 2.5rem 2rem;
+  max-width: 1200px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+`;
+
+const Header = styled.div`
+  text-align: center;
+  color: #e74c3c;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
 `;
 
 const PokeballSlots = styled.div`
@@ -29,6 +37,7 @@ function Dashboard({ selectedPokemons }) {
   const emptySlots = 6 - selectedPokemons.length;
   return (
     <DashboardContainer>
+      <Header>나만의 포켓몬</Header>
       <PokeballSlots>
         {selectedPokemons.map((pokemon) => (
           <PokeballImg
