@@ -1,105 +1,84 @@
 import React from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MOCK_DATA from '../data/mock';
 
 const DetailContainer = styled.div`
   min-height: 100vh;
-  background-color: #f5f5f5;
-  padding: 2rem;
-`;
-
-const Card = styled.div`
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #ffe4b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const PokemonImage = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
-  margin: 0 auto;
-  display: block;
+  margin-bottom: 2rem;
 `;
 
 const PokemonName = styled.h1`
+  color: #e74c3c;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
   text-align: center;
-  color: #333;
-  margin: 1rem 0;
 `;
 
-const TypeContainer = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-`;
-
-const Type = styled.span`
-  background: #f0f0f0;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+const Type = styled.div`
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 1.2rem;
+  text-align: center;
 `;
 
 const Description = styled.p`
-  color: #666;
+  color: #222;
+  font-size: 1.1rem;
   line-height: 1.6;
   text-align: center;
-  margin: 1rem 0;
+  margin-bottom: 2rem;
 `;
 
 const BackButton = styled.button`
-  background: #ff6b6b;
-  color: white;
+  background: #222;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-size: 1rem;
+  margin: 0 auto;
   display: block;
-  margin: 1rem auto;
-
+  transition: background 0.2s;
   &:hover {
-    background: #ff5252;
+    background: #444;
   }
 `;
 
 function Detail() {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const pokemonId = parseInt(searchParams.get('id'));
-  
+  const { id } = useParams();
+  const pokemonId = parseInt(id);
   const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
 
   if (!pokemon) {
     return (
       <DetailContainer>
-        <Card>
-          <h1>포켓몬을 찾을 수 없습니다.</h1>
-          <BackButton onClick={() => navigate('/dex')}>뒤로 가기</BackButton>
-        </Card>
+        <PokemonName>포켓몬을 찾을 수 없습니다.</PokemonName>
+        <BackButton onClick={() => navigate('/dex')}>뒤로 가기</BackButton>
       </DetailContainer>
     );
   }
 
   return (
     <DetailContainer>
-      <Card>
-        <PokemonImage src={pokemon.image} alt={pokemon.name} />
-        <PokemonName>{pokemon.name}</PokemonName>
-        <TypeContainer>
-          {pokemon.types.map((type) => (
-            <Type key={type}>{type}</Type>
-          ))}
-        </TypeContainer>
-        <Description>{pokemon.description}</Description>
-        <BackButton onClick={() => navigate('/dex')}>뒤로 가기</BackButton>
-      </Card>
+      <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
+      <PokemonName>{pokemon.korean_name}</PokemonName>
+      <Type>타입: {pokemon.types.join(', ')}</Type>
+      <Description>{pokemon.description}</Description>
+      <BackButton onClick={() => navigate('/dex')}>뒤로 가기</BackButton>
     </DetailContainer>
   );
 }

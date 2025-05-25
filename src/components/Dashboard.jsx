@@ -10,14 +10,6 @@ const DashboardContainer = styled.div`
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 `;
 
-const Header = styled.div`
-  text-align: center;
-  color: #e74c3c;
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-`;
-
 const PokeballSlots = styled.div`
   display: flex;
   justify-content: center;
@@ -37,7 +29,6 @@ function Dashboard({ selectedPokemons }) {
   const emptySlots = 6 - selectedPokemons.length;
   return (
     <DashboardContainer>
-      <Header>나만의 포켓몬</Header>
       <PokeballSlots>
         {selectedPokemons.map((pokemon) => (
           <PokeballImg
