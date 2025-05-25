@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
 
 const OuterContainer = styled.div`
-  background: rgb(240, 240, 240);
+  background: #fff;
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   max-width: 1200px;
